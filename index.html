@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tugas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <a href="tambah.html">Tambah </a><br>
+
+    <table id="kampus" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+        $(document).ready(function () {
+            $('#kampus').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: 'server_side.php',
+                type: 'POST',
+            });
+        });
+    </script>
+</body>
+
+</html>

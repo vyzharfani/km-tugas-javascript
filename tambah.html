@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tambah</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+
+        label.error {
+            border: none;
+            margin-left: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="proses_tambah.php" method="post" id="registration">
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" name="nama_depan"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" name="nama_belakang"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="surel"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="no_telp"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" name="alamat"></td>
+            </tr>
+            <tr>
+                <td colspan=2><input type="submit" name="submit" value="Tambah"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $("#registration").validate({
+            // Specify validation rules
+            rules: {
+                nama_depan: "required",
+                nama_belakang: "required",
+                surel: {
+                    required: true,
+                    email: true
+                },
+                no_telp: {
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10,
+                },
+                alamat: "required",
+            },
+            messages: {
+                nama_depan: {
+                    required: "Please enter first name",
+                },
+                nama_belakang: {
+                    required: "Please enter last name",
+                },
+                no_telp: {
+                    required: "Please enter phone number",
+                    digits: "Please enter valid phone number",
+                    minlength: "Phone number field accept only 10 digits",
+                    maxlength: "Phone number field accept only 10 digits",
+                },
+                surel: {
+                    required: "Please enter email address",
+                    email: "Please enter a valid email address.",
+                },
+                alamat: {
+                    required: "Please enter address",
+                }
+            },
+
+
+
+        });
+    });
+</script>
+
+</html>
